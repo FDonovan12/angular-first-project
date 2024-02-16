@@ -1,0 +1,51 @@
+@if (pokemon) {
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 center">
+      <h2 class="header center">{{ pokemon.name }}</h2>
+      <div class="card horizontal hoverable">
+        <div class="card-image">
+          <img [src]="pokemon.picture">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <table class="bordered striped">
+              <tbody>
+                <tr>
+                  <td>Nom</td>
+                  <td><strong>{{ pokemon.name }}</strong></td>
+                </tr>
+                <tr>
+                  <td>Points de vie</td>
+                  <td><strong>{{ pokemon.hp }}</strong></td>
+                </tr>
+                <tr>
+                  <td>Dégâts</td>
+                  <td><strong>{{ pokemon.cp }}</strong></td>
+                </tr>
+                <tr>
+                  <td>Types</td>
+                  <td>
+                    @for (type of pokemon.types; track type) {
+                      <span class="{{ type | pokemonTypeColor }}">{{ type }}</span>
+                    }
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date de création</td>
+                  <td>{{pokemon.created | date:"dd MMM yyyy" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-action">
+            <a href="#" (click)="goBack()">Retour</a>
+            <a href="edit/pokemon/{{pokemon.id}}">Editer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+@else {
+  <h4 class="center">Aucun pokémon à afficher !</h4>
+}

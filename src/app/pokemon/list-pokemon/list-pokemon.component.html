@@ -1,0 +1,56 @@
+<h1 class="center">List des pokemon!</h1>
+<input
+#input
+(keyup.enter)="selectPokemon(input.value)"
+type="number"
+/>
+<div [hidden]="!pokemonSelected">
+  Vous avez selectionné le pokemon : {{pokemonSelected?.name}}
+</div>
+<div [hidden]="pokemonSelected">
+  Aucun pokemon n'as été trouvé
+</div>
+
+<div class="container-fluid m-2">
+  {{defaultBack}}
+  <div class="row">
+    @for (pokemon of pokemonList; track pokemon) {
+      <div class="col-12 col-md-6 col-lg-3 my-3">
+        <a class="d-flex rounded shadow" pkmnBorderCard="{{defaultBack}}" href="/pokemon/{{pokemon.id}}">
+          <img class="pokemon_img" [src]="pokemon.picture" alt="pokemon.name"/>
+          <div class="card-stacked">
+            <div class="card-content rounded bg-white p-1 mt-2">
+              <div>{{pokemon.id}}</div>
+              <div>{{pokemon.name}}</div>
+              @for (type of pokemon.types; track type) {
+                <span class="{{type | pokemonTypeColor}}">
+                  {{type}}
+                </span>
+              }
+              <div>{{pokemon.created | date:"dd MMM yyyy" }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col l4 m6 s12" *ngFor="let pokemon of pokemonList">
+      <div class="card horizontal" pkmnBorderCard>
+        <div class="card-image">
+          <img [src]="pokemon.picture" alt="pokemon.name"/>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <div>{{pokemon.id}}</div>
+            <div>{{pokemon.name}}</div>
+            <div>{{pokemon.types}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

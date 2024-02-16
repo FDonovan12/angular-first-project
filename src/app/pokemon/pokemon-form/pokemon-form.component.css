@@ -3,11 +3,9 @@
 .pokemon-card {
     height: 100px;
 } */
-a {
-    text-decoration: none;
-    color: black;
+.ng-valid[required] {
+    border-left: 5px solid #42A948;
 }
-
-.pokemon_img {
-    width: 50%;
+.ng-invalid:not(form) {
+    border-left: 5px solid #A94442;
 }

@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
-  `,
-  styles: [],
+  templateUrl: 'app.component.html'
 })
-export class AppComponent {
-  title = 'ng-pokemon-app';
+export class AppComponent implements OnInit {
+  testApp: string = (Math.floor(Math.random()*256).toString(16)).padStart(2, '0'); 
+  ngOnInit(): void {
+    console.log("AppComponent : " + this.testApp);
+    
+  }
 }
