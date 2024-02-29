@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { PokemonService } from '../pokemon.service';
 import { Router } from '@angular/router';
 import { FormsModule } from "@angular/forms";
 import { PokemonTypeColorPipe } from '../pokemon-pipe-color.pipe';
 import { CommonModule } from '@angular/common';
+import { PathsPokemon } from '../pokemon.path';
 
 @Component({
   selector: 'app-pokemon-form',
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
   host: {ngSkipHydration: 'true'}
 })
 export class PokemonFormComponent implements OnInit {
+  paths = PathsPokemon
 
   @Input() pokemon: Pokemon;
   types: string[]
@@ -50,7 +52,7 @@ export class PokemonFormComponent implements OnInit {
 
   onSubmit() {
     console.log('Submit form !');
-    this.router.navigate(['/pokemons', this.pokemon.id])
+    this.router.navigate([this.paths.pokemon, this.pokemon.id])
     
   }
 }

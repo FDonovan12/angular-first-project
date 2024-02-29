@@ -4,6 +4,8 @@ import { Pokemon } from '../pokemon';
 import { PokemonTypeColorPipe } from "../pokemon-pipe-color.pipe";
 import { CommonModule } from "@angular/common";
 import { PokemonService } from '../pokemon.service';
+import { pokemonRoutes,  } from '../pokemon.routes';
+import { PathsPokemon } from '../pokemon.path';
 
 @Component({
     selector: 'app-detail-pokemon',
@@ -30,7 +32,7 @@ export class DetailPokemonComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/pokemons'])
+    this.router.navigate([PathsPokemon.pokemons])
   }
 
 }

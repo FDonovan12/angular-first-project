@@ -1,10 +1,11 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from "@angular/common";
 import { BorderCardDirective } from '../border-card.directive';
 import { PokemonTypeColorPipe } from '../pokemon-pipe-color.pipe';
 import { PokemonService } from '../pokemon.service';
+import { PathsPokemon } from '../pokemon.path';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -13,21 +14,14 @@ import { PokemonService } from '../pokemon.service';
   templateUrl: './list-pokemon.component.html',
   styles: ``
 })
-export class ListPokemonComponent implements OnInit {
-  ngOnInit(): void {
-    // console.log("ListPokemonComponent bef : " + this.defaultBack)
-    // this.defaultBack = BorderCardDirective.randomGradient();
-    // console.log("ListPokemonComponent aft : " + this.defaultBack)
-  }
+export class ListPokemonComponent {
+  paths = PathsPokemon
   pokemonList: Pokemon[] = this.pokemonService.getPokemonList();
   
   pokemonSelected: Pokemon|undefined;
   defaultBack: string = BorderCardDirective.randomGradient();
 
   constructor(private pokemonService: PokemonService) {
-    // console.log("ListPokemonComponent cons bef : " + this.defaultBack)
-    this.defaultBack = BorderCardDirective.randomGradient();
-    // console.log("ListPokemonComponent cons aft : " + this.defaultBack)
   }
   
   selectPokemon(pokemonId: string) {

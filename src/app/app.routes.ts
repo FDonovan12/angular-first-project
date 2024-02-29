@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
     {
         path: '',
-        loadChildren: () => import('./pokemon/pokemon.routes')
+        loadChildren: () => import('./pokemon/pokemon.routes').then(module => module.pokemonRoutes)
     },
     { 
         path: '**', 

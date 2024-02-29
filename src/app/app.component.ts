@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PathsPokemon } from './pokemon/pokemon.path';
 
 
 @Component({
@@ -9,9 +10,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
-  testApp: string = (Math.floor(Math.random()*256).toString(16)).padStart(2, '0'); 
+  paths = PathsPokemon
+  constructor() {}
   ngOnInit(): void {
-    console.log("AppComponent : " + this.testApp);
     
   }
 }
